@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from typing import Dict, Tuple, Union
+from typing import Dict, Tuple, Union, Optional
 
 
 """
@@ -160,7 +160,9 @@ class ASFClassifier(nn.Module):
         latent_dim: int, 
         hidden_dim: int,
         num_classes: int, 
-        num_heads: int
+        num_heads: int,
+        gate_init: str = "neutral",   # "neutral" | "semantic"
+        semantic_gate_init: Optional[torch.Tensor] = None,
     ):
         super().__init__()
         self.num_classes = num_classes
@@ -194,10 +196,18 @@ class ASFClassifier(nn.Module):
         )
 
         self.flow_prototypes = nn.Parameter(torch.randn(num_classes, hidden_dim))
-        if num_classes == 6:
-            init_gate = torch.tensor([3., 3., 3., -3., -3., -3.])
-        else:
+        if gate_init == "neutral":
             init_gate = torch.zeros(num_classes)
+        
+        elif gate_init == "semantic":
+            if semantic_gate_init is None:
+                raise ValueError("semantic_gate_init must be provided when gate_init='semantic'")
+            assert semantic_gate_init.shape == (num_classes,)
+            init_gate = semantic_gate_init.detach().clone()
+        
+        else:
+            raise ValueError(f"Unknown gate_init: {gate_init} (expected 'neutral' or 'semantic')")
+        
         self.dynamic_gate = nn.Parameter(init_gate)
 
     def forward(
