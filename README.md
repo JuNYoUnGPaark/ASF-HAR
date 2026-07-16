@@ -34,20 +34,21 @@ pip install -r requirements.txt
 - `model.py` - Implementation of the proposed **ASF** architecture.
 The implementation uses PyTorch, Numpy, pandas, scikit-learn, matplotlib, seaborn, and fvcore (for FLOPs analysis).
 
-## Citing this Repository
+## Citation
 
-If you use this code in your research, please cite:
+If you use this work, please cite:
 
-```
-@article{Dynamics-Aware Action State Flow for Wearable Human Activity Recognition,
-  title = {Dynamics-Aware Action State Flow for Wearable Human Activity Recognition},
-  author={JunYoung Park, Gyuyeon Lim, and Myung-Kyu Yi}
-  journal={},
-  volume={},
-  Issue={},
-  pages={},
-  year={}
-  publisher={}
+```bibtex
+@article{park2026dynamics,
+  author    = {JunYoung Park and Gyuyeon Lim and Myung-Kyu Yi},
+  title     = {Dynamics-Aware Action State Flow for Wearable Human Activity Recognition},
+  journal   = {IEEE Sensors Journal},
+  volume    = {26},
+  number    = {9},
+  pages     = {13557--13572},
+  year      = {2026},
+  publisher = {IEEE},
+  doi       = {10.1109/JSEN.2026.3675557}
 }
 ```
 
