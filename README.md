@@ -9,11 +9,13 @@ This repository implements the methodology proposed in the paper "Dynamics-Aware
 **Abstract**: Deploying human activity recognition (HAR) on wearable IoT devices requires representations that remain reliable under tight compute/energy budgets and gradual sensor degradation over long-term use. In this setting, slowly varying low-frequency bias can distort absolute signal levels and degrade static, snapshot-based features. We propose Action State Flow (ASF), a dynamics-centric formulation that represents an activity via its latent state evolution rather than instantaneous latent states. ASF defines a flow representation as the first-order latent transition, which mitigates baseline shifts by emphasizing relative evolution, and factorizes the flow into direction and magnitude to disentangle intrinsic dynamical patterns from nuisance scaling. State differencing suppresses additive low-frequency components, while direction normalization reduces sensitivity to multiplicative scale changes, yielding a transition-centric flow field tailored to drift-prone sensing. To further structure these dynamics for classification, ASF introduces a flow–prototype regularization objective with class-conditioned prototypes, encouraging consistent transition geometry within each activity while maintaining inter-class separability. Across five public benchmarks (UCI-HAR, WISDM, UniMiB, PAMAP2, and MHEALTH), ASF matches strong baselines in standard accuracy and improves robustness under low-frequency distortions compared with static representations. We also assess deployability on a Raspberry Pi 3B+, demonstrating practical end-to-end on-device inference latency and memory footprint for real-time wearable HAR. Finally, INT8 quantization reduces model size by approximately 71\% with only a marginal accuracy drop and improved runtime efficiency, supporting ASF as a lightweight approach for robust HAR under signal variations on edge devices.
 
 ## Dataset
-- **UCI-HAR** dataset is available at _https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones_
-- **PAMAP2** dataset is available at _https://archive.ics.uci.edu/dataset/231/pamap2+physical+activity+monitoring_
-- **MHEALTH** dataset is available at _https://archive.ics.uci.edu/dataset/319/mhealth+dataset_
-- **WISDM** dataset is available at _https://www.cis.fordham.edu/wisdm/dataset.php_
-- **UniMiB** dataset is available at _http://www.sal.disco.unimib.it/technologies/unimib-shar/_
+| Dataset  | Link |
+|----------|------|
+| UCI-HAR  | _https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones_ |
+| PAMAP2   | _https://archive.ics.uci.edu/dataset/231/pamap2+physical+activity+monitoring_ |
+| MHEALTH  | _https://archive.ics.uci.edu/dataset/319/mhealth+dataset_ |
+| WISDM    | _https://www.cis.fordham.edu/wisdm/dataset.php_ |
+| UniMiB    | _http://www.sal.disco.unimib.it/technologies/unimib-shar/_ |
 
 ## Requirements
 ```
